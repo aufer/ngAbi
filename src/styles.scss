@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+@import './scss/settings';
+@import './scss/elements';
+@import './scss/objects';
+
+.bold {
+  font-weight: bold;
+}
+

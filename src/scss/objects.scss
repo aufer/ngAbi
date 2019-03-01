@@ -1,0 +1,54 @@
+nav {
+  a.nav-link {
+    color: $color-accent;
+    font-size: 110%;
+    transition: 100ms color linear;
+
+    &:hover {
+      color: $color-font-highlight;
+    }
+  }
+  @include media-breakpoint-up(md) {
+  }
+}
+
+.page {
+  margin: 0;
+
+  &.even {
+    background: $color-main-light;
+  }
+
+  &--small {
+    padding-left: 15%;
+  }
+
+  section {
+    padding: 3rem 1rem;
+  }
+
+  .box {
+    padding: 2rem;
+    background: white;
+    margin-bottom: 1rem;
+
+    &--dark {
+      background-color: $color-main-light;
+    }
+
+    &__with-border {
+      border: 1px solid $color-accent2;
+    }
+  }
+}
+
+footer {
+  background-color: $color-accent2;
+  color: $color-white;
+
+  nav {
+    a.nav-link {
+      color: $color-white;
+    }
+  }
+}

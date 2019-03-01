@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ContentfulService} from './contentful/contentful.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngAbi';
+  title = 'Abenteuerspielplatz Möglingen e.V.';
+  sections;
+  footerPages;
+
+  constructor(private ctfSvc: ContentfulService, private router: Router) {
+    ctfSvc.getMainPages().then(pages => {
+      this.sections = pages;
+    });
+
+    ctfSvc.getFooterPages().then(pages => {
+      this.footerPages = pages;
+    });
+  }
 }
