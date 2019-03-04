@@ -1,6 +1,6 @@
 <div class="slider" [class.hero]="isHero">
   <div class="hero-body">
-    <div class="caption">
+    <div class="caption" [class.changing]="captionChanging">
       <h2>{{currentSlide.title}}</h2>
       <p>{{currentSlide.caption}}</p>
     </div>

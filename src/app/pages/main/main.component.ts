@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ContentfulService} from '../../contentful/contentful.service';
 import {ActivatedRoute} from '@angular/router';
+import {Page} from '../../model/page.model';
 
 @Component({
   selector: 'abi-main',
@@ -30,12 +31,12 @@ export class MainComponent implements OnInit {
   ];
 
   constructor(private ctfSvc: ContentfulService, private route: ActivatedRoute) {
-    ctfSvc.getMainPages().then(pages => {
+    ctfSvc.getMainPages().then((pages: Page[]) => {
       console.log(pages);
       this.sections = pages;
     });
 
-    ctfSvc.getFooterPages().then(pages => {
+    ctfSvc.getFooterPages().then((pages: Page[]) => {
       console.log(pages);
       this.footerPages = pages;
     });

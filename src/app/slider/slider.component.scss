@@ -15,9 +15,16 @@
       position: absolute;
       padding: 1.5rem 3rem;
       top: 70%;
+      opacity: 1;
 
       background: rgba(255,255,255, 0.8);
       left: 10%;
+
+      transition: left 0.5s ease-in-out, opacity 0.2s ease-in-out;
+
+      &.changing {
+        left: -100%
+      }
     }
   }
 
@@ -30,7 +37,7 @@
     background: no-repeat center;
     background-size: cover;
     z-index: -1;
-    transition: background 1.5s ease-in-out,background-image 1.5s ease-in-out,opacity 1s ease-in-out 2s;
+    transition: background 1.5s ease-in-out 0.25s,background-image 1.5s ease-in-out 0.25s,opacity 1s ease-in-out 2s;
     opacity: 1;
   }
 }

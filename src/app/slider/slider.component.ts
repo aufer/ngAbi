@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 
 export interface Slide {
   title: string;
@@ -22,21 +22,35 @@ export class SliderComponent implements OnInit {
   @Input()
   isHero = false;
 
+  captionChanging: boolean;
+
   currentSlide: Slide;
 
   private sliderInterval;
 
   ngOnInit() {
     if (!this.sliderData) return;
+    this.startSlider();
+  }
 
-    this.currentSlide = this.sliderData[0];
-
-    this.sliderInterval = setInterval(() => {
-      const currentIdx = this.sliderData.indexOf(this.currentSlide);
-      const nextIdx = currentIdx === this.sliderData.length - 1 ? 0 : currentIdx + 1;
-
-      this.currentSlide = this.sliderData[nextIdx];
+  private startSlider() {
+    this.setSlide();
+    setInterval(() => {
+      this.setSlide();
     }, this.duration);
+  }
+
+  private setSlide() {
+    this.captionChanging = true;
+    setTimeout(() => this.captionChanging = false, 1000);
+
+    if (!this.currentSlide) {
+      this.currentSlide = this.sliderData[0];
+    }
+    const currentIdx = this.sliderData.indexOf(this.currentSlide);
+    const nextIdx = currentIdx === this.sliderData.length - 1 ? 0 : currentIdx + 1;
+
+    this.currentSlide = this.sliderData[nextIdx];
   }
 
 }
