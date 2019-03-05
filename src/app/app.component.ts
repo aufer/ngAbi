@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   sections;
   footerPages;
 
+  menuOpen: boolean;
+
   constructor(private ctfSvc: ContentfulService, private route: ActivatedRoute) {
     ctfSvc.getMainPages().then(pages => {
       this.sections = pages;

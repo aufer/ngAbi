@@ -9,8 +9,7 @@ export interface Slide {
 
 @Component({
   selector: 'abi-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss']
+  templateUrl: './slider.component.html'
 })
 export class SliderComponent implements OnInit {
 
@@ -27,8 +26,6 @@ export class SliderComponent implements OnInit {
 
   currentSlide: Slide;
 
-  private sliderInterval;
-
   ngOnInit() {
     if (!this.sliderData) return;
     this.startSlider();
@@ -38,7 +35,7 @@ export class SliderComponent implements OnInit {
     this.setSlide();
     interval(this.duration).subscribe(() => {
       this.setSlide();
-    })
+    });
   }
 
   private setSlide() {

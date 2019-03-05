@@ -5,7 +5,7 @@
       <img src="assets/abi_logo.png">
     </a>
 
-    <ul class="nav justify-content-end">
+    <ul class="nav main-nav justify-content-end d-none d-xl-flex">
       <li class="nav-item" *ngFor="let section of sections">
         <a class="nav-link" routerLink="/index.html" [fragment]="section.anchor" href="javascript: void(0)">{{section.title}}</a>
       </li>
@@ -16,10 +16,31 @@
         <a class="nav-link" routerLink="/index.html" [fragment]="'oeffnungszeiten'" href="javascript: void(0)">Öffnungszeiten</a>
       </li>
     </ul>
+
+    <div class="burger" (click)="menuOpen = !menuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="mobile-nav-wrapper">
+      <div class="mobile-nav" [class.open]="menuOpen">
+        <ul class="justify-content-end">
+          <li class="list-item" *ngFor="let section of sections">
+            <a class="nav-link" routerLink="/index.html" [fragment]="section.anchor" (click)="menuOpen = false" href="javascript: void(0)">{{section.title}}</a>
+          </li>
+          <li class="list-item">
+            <a class="nav-link" [routerLink]="['aktuelles.html']" (click)="menuOpen = false" href="javascript: void(0)">Aktuelles</a>
+          </li>
+          <li class="list-item">
+            <a class="nav-link" routerLink="/index.html" [fragment]="'oeffnungszeiten'" (click)="menuOpen = false" href="javascript: void(0)">Öffnungszeiten</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </header>
 
-<router-outlet></router-outlet>
+<router-outlet style="padding-top: 15%;"></router-outlet>
 
 <footer>
   <nav class="navbar navbar-light py-5">
