@@ -7,7 +7,7 @@ import {Page} from '../../model/page.model';
   selector: 'abi-main',
   templateUrl: './main.component.html'
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
   sections;
   footerPages;
@@ -39,15 +39,6 @@ export class MainComponent implements OnInit {
     ctfSvc.getFooterPages().then((pages: Page[]) => {
       console.log(pages);
       this.footerPages = pages;
-    });
-  }
-
-  ngOnInit() {
-    this.route.fragment.subscribe((fragment: string) => {
-      console.log(fragment);
-      if (fragment && document.getElementById(fragment) != null) {
-        document.getElementById(fragment).scrollIntoView({behavior: 'smooth'});
-      }
     });
   }
 }

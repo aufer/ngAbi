@@ -1,9 +1,12 @@
 <div class="slider" [class.hero]="isHero">
   <div class="hero-body">
     <div class="caption" [class.changing]="captionChanging">
-      <h2>{{currentSlide.title}}</h2>
-      <p>{{currentSlide.caption}}</p>
+      <h2>{{currentSlide?.title}}</h2>
+      <p>{{currentSlide?.caption}}</p>
     </div>
   </div>
-  <div class="hero-background" [ngStyle]="{'background-image': 'url(' + currentSlide.url + ')'}"></div>
+  <div class="hero-background" [ngStyle]="{'background-image': 'url(' + currentSlide?.url + ')'}"></div>
+  <div class="scroll-hint">
+    <a routerLink="/index.html" [fragment]="'ueberuns'" href="javascript: void(0)">- weiter -</a>
+  </div>
 </div>

@@ -1,4 +1,5 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {interval} from 'rxjs/index';
 
 export interface Slide {
   title: string;
@@ -35,9 +36,9 @@ export class SliderComponent implements OnInit {
 
   private startSlider() {
     this.setSlide();
-    setInterval(() => {
+    interval(this.duration).subscribe(() => {
       this.setSlide();
-    }, this.duration);
+    })
   }
 
   private setSlide() {

@@ -7,16 +7,17 @@ import {ContentfulModule} from './contentful/contentful.module';
 import { SliderComponent } from './slider/slider.component';
 import { MainComponent } from './pages/main/main.component';
 import { ImprintComponent } from './pages/imprint/imprint.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import { NewsComponent } from './pages/news/news.component';
 import {Route, RouterModule} from '@angular/router';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
+import {RichContentRendererComponent} from './rich-content-renderer/rich-content-renderer.component';
 
 const routes: Route[] = [
   {path: '', pathMatch: 'full', redirectTo: 'index.html'},
   {path: 'index.html', component: MainComponent},
   {path: 'impressum.html', component: ImprintComponent},
-  {path: 'kontakt.html', component: ContactComponent},
-  {path: 'datenschutz.html', component: PrivacyComponent}
+  {path: 'datenschutz.html', component: PrivacyComponent},
+  {path: 'aktuelles.html', component: NewsComponent}
 ];
 
 @NgModule({
@@ -25,8 +26,9 @@ const routes: Route[] = [
     SliderComponent,
     MainComponent,
     ImprintComponent,
-    ContactComponent,
+    NewsComponent,
     PrivacyComponent,
+    RichContentRendererComponent
   ],
   imports: [
     BrowserModule,

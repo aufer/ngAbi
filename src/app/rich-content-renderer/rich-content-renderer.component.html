@@ -1,0 +1,23 @@
+<h3 *ngIf="content.type === 'heading-3'">{{content.elements[0].value}}</h3>
+<h4 *ngIf="content.type === 'heading-4'">{{content.elements[0].value}}</h4>
+<h5 *ngIf="content.type === 'heading-5'">{{content.elements[0].value}}</h5>
+<h6 *ngIf="content.type === 'heading-6'">{{content.elements[0].value}}</h6>
+
+<p *ngIf="content.type === 'paragraph'">
+  <ng-container *ngFor="let p of content.elements">
+    <ng-container *ngIf="p.type === 'text'">{{p.value}}</ng-container>
+    <a *ngIf="p.type === 'hyperlink'" [href]="p.raw.data.uri">{{p.raw.content[0].value}}</a>
+    <a *ngIf="p.type === 'asset-hyperlink'" [href]="p.raw.data.target.fields?.file.url" target="_blank">{{p.content[0].value}}</a>
+  </ng-container>
+</p>
+
+<ul *ngIf="content.type === 'unordered-list'">
+  <li *ngFor="let item of content.elements">
+    <ng-container *ngFor="let subItem of item.content">
+      <ng-container *ngFor="let p of subItem.content">
+        <ng-container *ngIf="p.type === 'text'">{{p.value}}</ng-container>
+        <a *ngIf="p.type === 'hyperlink'" [href]="p.raw.data.uri">{{p.raw.content[0].value}}</a>
+      </ng-container>
+    </ng-container>
+  </li>
+</ul>

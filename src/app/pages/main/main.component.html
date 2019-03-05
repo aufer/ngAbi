@@ -5,31 +5,7 @@
 <div class="page" *ngFor="let section of sections; let pIdx = index" [ngClass]="{even: pIdx % 2 === 0}">
   <section class="container" [id]="section.anchor">
     <h2>{{section.title}}</h2>
-    <ng-container *ngFor="let content of section.content">
-      <h3 *ngIf="content.type === 'heading-3'">{{content.elements[0].value}}</h3>
-      <h4 *ngIf="content.type === 'heading-4'">{{content.elements[0].value}}</h4>
-      <h5 *ngIf="content.type === 'heading-5'">{{content.elements[0].value}}</h5>
-      <h6 *ngIf="content.type === 'heading-6'">{{content.elements[0].value}}</h6>
-
-      <p *ngIf="content.type === 'paragraph'">
-        <ng-container *ngFor="let p of content.elements">
-          <ng-container *ngIf="p.type === 'text'">{{p.value}}</ng-container>
-          <a *ngIf="p.type === 'hyperlink'" [href]="p.raw.data.uri">{{p.raw.content[0].value}}</a>
-        </ng-container>
-      </p>
-
-      <ul *ngIf="content.type === 'unordered-list'">
-        <li *ngFor="let item of content.elements">
-          <ng-container *ngFor="let subItem of item.content">
-            <ng-container *ngFor="let p of subItem.content">
-              <ng-container *ngIf="p.type === 'text'">{{p.value}}</ng-container>
-              <a *ngIf="p.type === 'hyperlink'" [href]="p.raw.data.uri">{{p.raw.content[0].value}}</a>
-            </ng-container>
-          </ng-container>
-        </li>
-      </ul>
-    </ng-container>
-
+    <abi-rich-content *ngFor="let content of section.content" [content]="content"></abi-rich-content>
     <ng-container *ngIf="section.customContent">
       <div class="row">
         <div class="col-12 col-lg-6" *ngFor="let custElem of section.customContent; let i = index">

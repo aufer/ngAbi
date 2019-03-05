@@ -1,27 +1,27 @@
 import {EntryCollection} from 'contentful';
-import {replaceSpecialChars, sortBy} from './utils';
+import {normalizeRichContent, replaceSpecialChars, sortBy} from './utils';
 import {Page} from './page.model';
 
-export const pageFactory = (rawPages: EntryCollection<any>) => {
+export const pageCollectionBuilder = (rawPages: EntryCollection<any>) => {
   return rawPages.items
   .map(buildPage)
   .sort(sortBy('order'));
 };
 
+export const pageBuilder = rawPage => {
+  return buildPage(rawPage);
+};
+
 const buildPage = (page): Page => ({
   title: page.fields['seitentitel'],
   anchor: replaceSpecialChars(page.fields['seitentitel'].toLowerCase()),
-  content: normalizePageContent(page.fields['seiteninhalt'].content),
+  content: normalizeRichContent(page.fields['seiteninhalt']),
   customContent: normalizeCustomContent(page.fields['customElements']),
-  order: page.fields['order']
+  order: page.fields['order'],
+  images: [],
+  isMain: false,
+  isFooter: false
 });
-
-const normalizePageContent = (content) => {
-  return content.map(contentGroup => ({
-    type: contentGroup.nodeType,
-    elements: normalizeElements(contentGroup.content)
-  }));
-};
 
 const normalizeCustomContent = customElements => {
   if (!customElements) return [];
@@ -38,19 +38,7 @@ const normalizeCustomContent = customElements => {
   });
 };
 
-const normalizeElements = elements => {
-  return elements.map(element => {
-    return {
-      type: element.nodeType,
-      value: element.value || undefined,
-      content: element.content ? normalizeElements(element.content) : undefined,
-      marks: element.marks ? element.marks.map(m => m.type) : [],
-      raw: {...element}
-    };
-  });
-};
-
-const normalizePictureElement = imageData => {
+export const normalizePictureElement = imageData => {
   if (!imageData) return;
   return {
     url: imageData.fields.file.url,
