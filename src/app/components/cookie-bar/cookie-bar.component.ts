@@ -5,7 +5,7 @@ import {Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angu
   templateUrl: './cookie-bar.component.html',
   styleUrls: ['./cookie-bar.component.scss']
 })
-export class CookieBarComponent implements OnInit {
+export class CookieBarComponent {
 
   @Input()
   privacyTermsTarget: string;

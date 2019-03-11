@@ -1,5 +1,6 @@
 import {Inject, Injectable, Renderer2} from '@angular/core';
 import {environment} from '../../environments/environment';
+import {WINDOW} from '../app.module';
 
 export type EventType = 'click';
 
@@ -12,7 +13,7 @@ export class TrackingService {
   private trackingId;
   private stage: string;
 
-  constructor(@Inject(Window) private window: Window) {
+  constructor(@Inject(WINDOW) private window: Window) {
     this.trackingId = environment.trackingId;
     this.stage = environment.production ? 'prod' : 'dev';
   }

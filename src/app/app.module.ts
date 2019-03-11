@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {ContentfulModule} from './services/contentful/contentful.module';
@@ -20,6 +20,11 @@ const routes: Route[] = [
   {path: 'datenschutz.html', component: PrivacyComponent},
   {path: 'aktuelles.html', component: NewsComponent}
 ];
+
+export const WINDOW = new InjectionToken('Window');
+export function windowFactory() {
+  return window;
+}
 
 @NgModule({
   declarations: [
@@ -42,8 +47,8 @@ const routes: Route[] = [
   ],
   providers: [
     {
-      provide: Window,
-      useValue: window
+      provide: WINDOW,
+      useFactory: windowFactory
     },
     TrackingService
   ],
