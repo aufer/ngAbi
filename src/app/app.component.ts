@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ContentfulService} from './contentful/contentful.service';
 import {ActivatedRoute} from '@angular/router';
 import {delay, timeout} from 'rxjs/internal/operators';
@@ -13,6 +13,12 @@ export class AppComponent implements OnInit {
   footerPages;
 
   menuOpen: boolean;
+  showGoUp: boolean;
+
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+  onScroll() {
+    this.showGoUp = window.scrollY > window.innerHeight;
+  }
 
   constructor(private ctfSvc: ContentfulService, private route: ActivatedRoute) {
     ctfSvc.getMainPages().then(pages => {
@@ -26,10 +32,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.route.fragment.pipe(delay(50)).subscribe((fragment: string) => {
-      console.log(fragment);
       if (fragment && document.getElementById(fragment) != null) {
-        document.getElementById(fragment).scrollIntoView({behavior: 'smooth'});
+        this.scrollTo(fragment);
       }
     });
+  }
+
+  goUp() {
+      this.scrollTo('mainNav');
+  }
+
+  private scrollTo(elemId) {
+    document.getElementById(elemId).scrollIntoView({behavior: 'smooth'});
   }
 }

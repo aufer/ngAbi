@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header>
-  <nav class="navbar navbar-light">
+  <nav id="mainNav" class="navbar navbar-light">
     <a class="navbar-brand" href="#">
       <img src="assets/abi_logo.png">
     </a>
@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <div class="burger" (click)="menuOpen = !menuOpen">
+    <div class="burger" [class.open]="menuOpen" (click)="menuOpen = !menuOpen">
       <span></span>
       <span></span>
       <span></span>
@@ -58,3 +58,7 @@
     </ul>
   </nav>
 </footer>
+
+<button class="goup" [class.show]="showGoUp" (click)="goUp()">
+  <div></div>
+</button>

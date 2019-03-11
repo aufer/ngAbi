@@ -32,12 +32,10 @@ export class MainComponent {
 
   constructor(private ctfSvc: ContentfulService, private route: ActivatedRoute) {
     ctfSvc.getMainPages().then((pages: Page[]) => {
-      console.log(pages);
       this.sections = pages;
     });
 
     ctfSvc.getFooterPages().then((pages: Page[]) => {
-      console.log(pages);
       this.footerPages = pages;
     });
   }

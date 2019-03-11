@@ -1,99 +1,6 @@
-nav {
-  a.nav-link {
-    color: $color-accent;
-    font-size: 100%;
-    transition: 100ms color linear;
-
-    &:hover {
-      color: $color-font-highlight;
-    }
-  }
-}
-
-.navbar {
-  position: relative;
-
-  .navbar-brand {
-    img {
-      width: 60%;
-    }
-  }
-
-  .burger {
-    display: block;
-    position: absolute;
-    right: 3rem;
-    width: 3rem;
-    height: 2rem;
-    cursor: pointer;
-
-    span {
-      display: block;
-      height: 33%;
-      position: relative;
-
-      &:before {
-        content: '';
-        display: block;
-        border-bottom: 1px solid $color-accent2-light;
-      }
-    }
-  }
-
-  .mobile-nav-wrapper {
-    position: relative;
-    z-index: 1000;
-  }
-  .mobile-nav {
-    background-color: $color-accent2;
-    position: fixed;
-    transform: translateX(100%);
-    height: 85%;
-    bottom: 0;
-    right: 0;
-
-    transition: transform 300ms ease-in-out;
-
-    &.open {
-      transform: translateX(0);
-    }
-
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-
-      li {
-        padding: 0.5rem 2rem;
-
-        & + li {
-          border-top: 1px solid $color-white;
-        }
-
-        &:active {
-          background: $color-accent2-light;
-        }
-
-        a {
-          color: $color-white;
-          font-weight: lighter;
-        }
-      }
-    }
-  }
-  @include media-breakpoint-up(xl) {
-    .navbar-brand {
-      img {
-        width: 100%;
-      }
-    }
-
-    .burger,
-    .mobile-nav-wrapper {
-      display: none;
-    }
-  }
-}
+@import "./objects.goup";
+@import "./objects.hero";
+@import "./objects.nav";
 
 .page {
   margin: 0;
@@ -131,8 +38,13 @@ nav {
   }
 }
 
-article {
+#partner {
+  p {
+    text-align: left;
+  }
+}
 
+article {
   & + article {
     margin-top: 5rem;
   }
@@ -141,95 +53,6 @@ article {
     font-size: 1rem;
   }
 }
-
-.hero {
-  min-height: 100vh;
-  align-items: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .hero-body {
-    flex-grow: 1;
-    flex-shrink: 0;
-    padding: 0;
-
-    .caption {
-      display: inline-block;
-      position: absolute;
-      padding: 1.5rem 3rem;
-      opacity: 1;
-      background: rgba(255,255,255, 0.8);
-      bottom: 0;
-
-
-      transition: opacity 0.2s ease-in-out;
-
-      &.changing {
-        opacity: 0;
-      }
-
-      @include media-breakpoint-down(md) {
-        h2 { font-size: 1.25rem; }
-        p { font-size: 1rem; }
-      }
-
-      @include media-breakpoint-up(xl) {
-        bottom: auto;
-        top: 70%;
-        transform: translateX(10%);
-        transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;
-
-        &.changing {
-          transform: translateX(-1000%);
-        }
-      }
-    }
-
-  }
-
-  .hero-background {
-    position: absolute;
-    width: 100%;
-    height: 85%;
-    bottom: 0;
-    right: 0;
-    background: no-repeat center;
-    background-size: cover;
-    z-index: -1;
-    transition: background-image 1.5s ease-in-out 0.25s,opacity 1s ease-in-out 2s;
-    -moz-transition: background-image 1.5s ease-in-out 0.25s,opacity 1s ease-in-out 2s;
-    opacity: 1;
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 20px;
-
-    a {
-      color: #fff;
-      font-size: 1.75rem;
-      font-weight: lighter;
-      animation: wobble 5s infinite;
-    }
-  }
-
-  @include media-breakpoint-up(xl) {
-    .hero-background {
-      height: 80%;
-    }
-  }
-}
-
-@keyframes wobble {
-  0% {opacity: 1;}
-  80% {opacity: 0}
-  100% {opacity: 1;}
-}
-
 
 footer {
   background-color: $color-accent2;
