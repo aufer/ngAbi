@@ -1,0 +1,80 @@
+<form [formGroup]="contactForm" (ngSubmit)="submit()" novalidate>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="firstName">
+        Vorname:
+      </label>
+      <input type="text" id="firstName" class="form-control" formControlName="firstName"
+             [class.is-invalid]="submitted && f.firstName.errors"
+             [class.is-valid]="f.firstName.status === 'VALID'">
+      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <div *ngIf="f.firstName.errors.required">Bitte nennen Sie uns Ihren Vornamen</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="lastName">
+        Nachname:
+      </label>
+      <input type="text" id="lastName" class="form-control" formControlName="lastName"
+             [class.is-invalid]="submitted && f.lastName.errors"
+             [class.is-valid]="f.lastName.status === 'VALID'">
+      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <div *ngIf="f.lastName.errors.required">Bitte nennen Sie uns Ihren Nachnamen</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="email">
+        Ihre E-Mail-Addresse:
+      </label>
+      <input type="email" id="email" class="form-control" formControlName="email"
+             [class.is-invalid]="submitted && f.email.errors"
+             [class.is-valid]="f.email.status === 'VALID'">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Bitte nennen Sie uns Ihrer E-Mail-Adresse</div>
+        <div *ngIf="f.email.errors.email">Bitte prüfen Sie das Format Ihrer E-Mail-Adresse</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="phone">
+        Telefonnummer:
+      </label>
+      <input type="email" id="phone" class="form-control" formControlName="phone"
+             [class.is-invalid]="submitted && f.phone.errors"
+             [class.is-valid]="f.phone.status === 'VALID'">
+      <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+        <div *ngIf="f.phone.errors.required">Bitte nennen Sie uns Ihre Telefonnummer</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="subject">
+      Betreff:
+    </label>
+    <input type="text" id="subject" class="form-control" formControlName="subject"
+           [class.is-invalid]="submitted && f.subject.errors"
+           [class.is-valid]="f.subject.status === 'VALID'">
+    <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+      <div *ngIf="f.subject.errors.required">Bitte geben Sie einen Betreff an</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="content">
+      Ihre Nachricht:
+    </label>
+    <textarea id="content" class="form-control" formControlName="content"
+              [class.is-invalid]="submitted && f.content.errors"
+              [class.is-valid]="f.content.status === 'VALID'"></textarea>
+    <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
+      <div *ngIf="f.content.errors.required">Bitte nennen Sie uns Ihre Nachricht</div>
+    </div>
+  </div>
+
+  <input type="submit" class="btn btn-warning" value="Senden">
+</form>

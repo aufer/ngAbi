@@ -2,6 +2,12 @@
   <abi-slider [sliderData]="sliderData" [isHero]="true"></abi-slider>
 </div>
 
+<div class="page">
+  <section class="container">
+    <abi-contact-form></abi-contact-form>
+  </section>
+</div>
+
 <div class="page" *ngFor="let section of sections; let pIdx = index" [ngClass]="{even: pIdx % 2 === 0}">
   <section class="container" [id]="section.anchor">
     <h2>{{section.title}}</h2>
@@ -28,6 +34,7 @@
     </ng-container>
   </section>
 </div>
+
 
 
 <div class="page even mt-5">

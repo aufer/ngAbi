@@ -13,6 +13,8 @@ import {RichContentRendererComponent} from './components/rich-content-renderer/r
 import {TrackingService} from './services/tracking.service';
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {WINDOW, windowFactory} from './services/window.provider';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Route[] = [
   {path: '', pathMatch: 'full', redirectTo: 'index.html'},
@@ -31,11 +33,13 @@ const routes: Route[] = [
     NewsComponent,
     PrivacyComponent,
     RichContentRendererComponent,
-    CookieBarComponent
+    CookieBarComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
     ContentfulModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
