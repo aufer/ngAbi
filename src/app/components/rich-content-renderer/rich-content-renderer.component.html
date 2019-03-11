@@ -8,7 +8,11 @@
     <ng-container *ngIf="p.type === 'text' && p.marks.length === 0">{{p.value}}</ng-container>
     <ng-container *ngIf="p.type === 'text' && isBold(p)"><strong>{{p.value}}</strong></ng-container>
     <ng-container *ngIf="p.type === 'text' && isItalic(p)"><i>{{p.value}}</i></ng-container>
-    <a *ngIf="p.type === 'hyperlink'" [href]="p.raw.data.uri">{{p.raw.content[0].value}}</a>
+    <ng-container *ngIf="p.type === 'hyperlink'">
+      <a *ngIf="p.raw.data.uri.startsWith('/')" [routerLink]="p.raw.data.uri.split('#')[0]" [fragment]="p.raw.data.uri.split('#')[1]">{{p.raw.content[0].value}}</a>
+      <a *ngIf="p.raw.data.uri.startsWith('http')" [href]="p.raw.data.uri">{{p.raw.content[0].value}}</a>
+
+    </ng-container>
     <a *ngIf="p.type === 'asset-hyperlink'" [href]="p.raw.data.target.fields?.file.url" target="_blank">{{p.content[0].value}}</a>
   </ng-container>
 </p>
