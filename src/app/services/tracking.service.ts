@@ -1,6 +1,6 @@
 import {Inject, Injectable, Renderer2} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {WINDOW} from '../app.module';
+import {WINDOW} from './window.provider';
 
 export type EventType = 'click';
 

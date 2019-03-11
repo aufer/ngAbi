@@ -12,6 +12,7 @@ import {PrivacyComponent} from './pages/privacy/privacy.component';
 import {RichContentRendererComponent} from './components/rich-content-renderer/rich-content-renderer.component';
 import {TrackingService} from './services/tracking.service';
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
+import {WINDOW, windowFactory} from './services/window.provider';
 
 const routes: Route[] = [
   {path: '', pathMatch: 'full', redirectTo: 'index.html'},
@@ -20,11 +21,6 @@ const routes: Route[] = [
   {path: 'datenschutz.html', component: PrivacyComponent},
   {path: 'aktuelles.html', component: NewsComponent}
 ];
-
-export const WINDOW = new InjectionToken('Window');
-export function windowFactory() {
-  return window;
-}
 
 @NgModule({
   declarations: [
