@@ -1,9 +1,9 @@
 import {ContentfulClientApi, EntryCollection} from 'contentful';
 import {Inject, Injectable} from '@angular/core';
 import {CtfRaw} from './contentful.factory';
-import {Page} from '../model/page.model';
-import {pageCollectionBuilder} from '../model/page.factory';
-import {articleCollectionBuilder} from '../model/article.factory';
+import {Page} from '../../model/page.model';
+import {pageCollectionBuilder} from '../../model/page.factory';
+import {articleCollectionBuilder} from '../../model/article.factory';
 
 @Injectable()
 export class ContentfulService {

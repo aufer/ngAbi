@@ -47,7 +47,7 @@
     <span>Copyright &copy; 2019 Abenteuerspielplatz Möglingen. Alle Rechte vorbehalten.</span>
     <ul class="nav justify-content-end">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['kontakt.html']" href="javascript: void(0)">Kontakt</a>
+        <a class="nav-link" [routerLink]="['index.html']" [fragment]="'kontakt'" href="javascript: void(0)">Kontakt</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['impressum.html']" href="javascript: void(0)">Impressum</a>
@@ -62,3 +62,5 @@
 <button class="goup" [class.show]="showGoUp" (click)="goUp()">
   <div></div>
 </button>
+
+<abi-cookie-bar (accepted)="cookiesAccepted($event)" [privacyTermsTarget]="'datenschutz.html'"></abi-cookie-bar>

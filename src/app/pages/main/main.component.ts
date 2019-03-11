@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ContentfulService} from '../../contentful/contentful.service';
+import {ContentfulService} from '../../services/contentful/contentful.service';
 import {ActivatedRoute} from '@angular/router';
 import {Page} from '../../model/page.model';
 

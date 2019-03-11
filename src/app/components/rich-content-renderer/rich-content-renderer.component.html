@@ -23,3 +23,14 @@
     </ng-container>
   </li>
 </ul>
+
+<ol *ngIf="content.type === 'ordered-list'">
+  <li *ngFor="let item of content.elements">
+    <ng-container *ngFor="let subItem of item.content">
+      <ng-container *ngFor="let p of subItem.content">
+        <ng-container *ngIf="p.type === 'text'">{{p.value}}</ng-container>
+        <a *ngIf="p.type === 'hyperlink'" [href]="p.raw.data.uri">{{p.raw.content[0].value}}</a>
+      </ng-container>
+    </ng-container>
+  </li>
+</ol>
