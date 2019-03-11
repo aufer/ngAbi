@@ -1,0 +1,30 @@
+:host {
+  background: white;
+  border-top: 1px solid #eee;
+  display: block;
+  font-size: 14px;
+  position: fixed;
+  padding: 2rem;
+  text-align: justify;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  transition: transform 200ms linear 300ms;
+
+  &.done {
+    transform: translateY(100%);
+  }
+
+  p {
+    font-size: inherit;
+  }
+}
+
+.cookie-bar-closer {
+  cursor: pointer;
+  text-align: right;
+}
+
+

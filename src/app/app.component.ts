@@ -1,7 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {ContentfulService} from './contentful/contentful.service';
-import {ActivatedRoute} from '@angular/router';
-import {delay, timeout} from 'rxjs/internal/operators';
+import {Component, HostListener, OnInit, Renderer2} from '@angular/core';
+import {ContentfulService} from './services/contentful/contentful.service';
+import {NavigationEnd, Router} from '@angular/router';
+import {TrackingService} from './services/tracking.service';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +15,7 @@ export class AppComponent implements OnInit {
   menuOpen: boolean;
   showGoUp: boolean;
 
-  @HostListener('window:scroll', ['$event']) // for window scroll events
-  onScroll() {
-    this.showGoUp = window.scrollY > window.innerHeight;
-  }
-
-  constructor(private ctfSvc: ContentfulService, private route: ActivatedRoute) {
+  constructor(private ctfSvc: ContentfulService, private router: Router, private trackingSvc: TrackingService, private renderer: Renderer2) {
     ctfSvc.getMainPages().then(pages => {
       this.sections = pages;
     });
@@ -30,16 +25,33 @@ export class AppComponent implements OnInit {
     });
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    this.showGoUp = window.scrollY > window.innerHeight;
+  }
+
   ngOnInit() {
-    this.route.fragment.pipe(delay(50)).subscribe((fragment: string) => {
-      if (fragment && document.getElementById(fragment) != null) {
-        this.scrollTo(fragment);
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        this.trackingSvc.trackPageView();
       }
     });
   }
 
   goUp() {
-      this.scrollTo('mainNav');
+    this.trackingSvc.trackEvent('click', {
+      'event_category': 'navigation-helper',
+      'event_label': 'go-up'
+    });
+    this.scrollTo('mainNav');
+  }
+
+  cookiesAccepted(selection: boolean) {
+    if (selection) {
+      this.trackingSvc.initialize(this.renderer);
+    } else {
+      this.trackingSvc.deactivate();
+    }
   }
 
   private scrollTo(elemId) {

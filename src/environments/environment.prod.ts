@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  trackingId: 'UA-135991984-1'
 };

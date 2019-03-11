@@ -1,16 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import {ContentfulModule} from './contentful/contentful.module';
-import { SliderComponent } from './slider/slider.component';
-import { MainComponent } from './pages/main/main.component';
-import { ImprintComponent } from './pages/imprint/imprint.component';
-import { NewsComponent } from './pages/news/news.component';
+import {AppComponent} from './app.component';
+import {ContentfulModule} from './services/contentful/contentful.module';
+import {SliderComponent} from './components/slider/slider.component';
+import {MainComponent} from './pages/main/main.component';
+import {ImprintComponent} from './pages/imprint/imprint.component';
+import {NewsComponent} from './pages/news/news.component';
 import {Route, RouterModule} from '@angular/router';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
-import {RichContentRendererComponent} from './rich-content-renderer/rich-content-renderer.component';
+import {PrivacyComponent} from './pages/privacy/privacy.component';
+import {RichContentRendererComponent} from './components/rich-content-renderer/rich-content-renderer.component';
+import {TrackingService} from './services/tracking.service';
+import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 
 const routes: Route[] = [
   {path: '', pathMatch: 'full', redirectTo: 'index.html'},
@@ -28,15 +29,25 @@ const routes: Route[] = [
     ImprintComponent,
     NewsComponent,
     PrivacyComponent,
-    RichContentRendererComponent
+    RichContentRendererComponent,
+    CookieBarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     ContentfulModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+    })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: Window,
+      useValue: window
+    },
+    TrackingService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
