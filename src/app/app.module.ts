@@ -15,11 +15,11 @@ import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {WINDOW, windowFactory} from './services/window.provider';
 
 const routes: Route[] = [
-  {path: '', pathMatch: 'full', redirectTo: 'index.html'},
-  {path: 'index.html', component: MainComponent},
-  {path: 'impressum.html', component: ImprintComponent},
-  {path: 'datenschutz.html', component: PrivacyComponent},
-  {path: 'aktuelles.html', component: NewsComponent}
+  {path: '', pathMatch: 'full', redirectTo: 'start'},
+  {path: 'start', component: MainComponent},
+  {path: 'impressum', component: ImprintComponent},
+  {path: 'datenschutz', component: PrivacyComponent},
+  {path: 'aktuelles', component: NewsComponent}
 ];
 
 @NgModule({

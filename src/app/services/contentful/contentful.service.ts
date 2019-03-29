@@ -1,9 +1,10 @@
-import {ContentfulClientApi, EntryCollection} from 'contentful';
+import {ContentfulClientApi} from 'contentful';
 import {Inject, Injectable} from '@angular/core';
 import {CtfRaw} from './contentful.factory';
 import {Page} from '../../model/page.model';
 import {pageCollectionBuilder} from '../../model/page.factory';
 import {articleCollectionBuilder} from '../../model/article.factory';
+import {Article} from '../../model/article.model';
 
 @Injectable()
 export class ContentfulService {
@@ -27,7 +28,7 @@ export class ContentfulService {
     }).then(pageCollectionBuilder);
   }
 
-  getArticles() {
+  getArticles(): Promise<Article[]> {
     return this.ctfSvc.getEntries({
       content_type: 'blogPost',
       order: 'fields.erstellungsdatum'

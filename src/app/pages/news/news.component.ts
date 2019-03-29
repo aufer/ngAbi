@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ContentfulService} from '../../services/contentful/contentful.service';
 import {Article} from '../../model/article.model';
 
 @Component({
-  selector: 'abi-contact',
+  selector: 'abi-news',
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss']
 })

@@ -1,12 +1,12 @@
 import {Entry, EntryCollection} from 'contentful';
-import {normalizeRichContent, sortBy} from './utils';
+import {normalizeRichContent} from './utils';
 import {Article} from './article.model';
 import {normalizePictureElement} from './page.factory';
 
 export const articleCollectionBuilder = (rawPages: EntryCollection<any>) => {
+  console.log(rawPages.items);
   return rawPages.items
-  .map(buildArticle)
-  .sort(sortBy('created'));
+  .map(buildArticle);
 };
 
 const buildArticle = (rawArticle: Entry<any>): Article => {
