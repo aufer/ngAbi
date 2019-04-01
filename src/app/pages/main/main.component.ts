@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ContentfulService} from '../../services/contentful/contentful.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {Page} from '../../model/page.model';
 import {Appointment} from '../../model/appointment.model';
 import {Article} from '../../model/article.model';
@@ -55,8 +55,10 @@ export class MainComponent {
       if (event instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
         if (tree.fragment) {
-          const element = document.querySelector('#' + tree.fragment);
-          if (element) { element.scrollIntoView({behavior: 'smooth'}); }
+          setTimeout(() => {
+            const element = document.getElementById(tree.fragment);
+            if (element) { element.scrollIntoView(); }
+          }, 200);
         }
       }
     });

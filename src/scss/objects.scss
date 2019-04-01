@@ -53,24 +53,3 @@
     text-align: left;
   }
 }
-
-article {
-  & + article {
-    margin-top: 5rem;
-  }
-
-  .date {
-    font-size: 1rem;
-  }
-}
-
-footer {
-  background-color: $color-accent2;
-  color: $color-white;
-
-  nav {
-    a.nav-link {
-      color: $color-white;
-    }
-  }
-}

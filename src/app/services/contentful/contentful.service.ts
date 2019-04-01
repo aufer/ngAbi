@@ -48,7 +48,7 @@ export class ContentfulService {
   getUpcomingAppointments(): Promise<Appointment[]> {
     return this.ctfSvc.getEntries({
       content_type: 'termine',
-      order: '-fields.datum',
+      order: 'fields.datum',
       limit: 5,
       'fields.datum[gte]': new Date().toISOString()
     }).then(appointmentsCollectionBuilder);

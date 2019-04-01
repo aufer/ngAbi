@@ -18,9 +18,10 @@ export class NewsComponent {
       if (event instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
         if (tree.fragment) {
-          const element = document.querySelector('#' + tree.fragment);
-          console.log('scroll into view');
-          if (element) { element.scrollIntoView({behavior: 'smooth'}); }
+          setTimeout(() => {
+            const element = document.querySelector('#' + tree.fragment);
+            if (element) { element.scrollIntoView(); }
+          }, 200);
         }
       }
     });

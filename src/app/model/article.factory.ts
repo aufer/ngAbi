@@ -4,9 +4,7 @@ import {Article} from './article.model';
 import {normalizePictureElement} from './page.factory';
 
 export const articleCollectionBuilder = (rawPages: EntryCollection<any>) => {
-  console.log(rawPages.items);
-  return rawPages.items
-  .map(buildArticle);
+  return rawPages.items.map(buildArticle);
 };
 
 const buildArticle = (rawArticle: Entry<any>): Article => {

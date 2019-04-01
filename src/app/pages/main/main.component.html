@@ -6,9 +6,10 @@
     <div class="col-12 col-lg-4">
       <div class="box">
         <h5>Aktuelles</h5>
+        <div class="bullet"></div>
         <ul *ngFor="let appt of latestNews">
           <li><strong>{{appt.title}}</strong><br><span><a routerLink="/aktuelles"
-                                                          [fragment]="appt.anchor">weiterlesen</a></span></li>
+                                                          [fragment]="appt.anchor">&raquo; weiterlesen</a></span></li>
         </ul>
       </div>
 
