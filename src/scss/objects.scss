@@ -5,15 +5,6 @@
 .page {
   margin: 0;
 
-  &.even {
-    background: $color-main-light;
-  }
-
-  &--dark {
-    margin-top: 2%;
-    background: $color-main-light;
-  }
-
   section {
     padding: 3rem 1rem;
   }
@@ -30,11 +21,30 @@
     &__with-border {
       border: 1px solid $color-accent2;
     }
+
+    ul {
+      font-weight: lighter;
+    }
   }
 
   figure {
     margin: 2rem 0;
     width: 95%
+  }
+
+  &.even {
+    background-color: $color-main-light;
+  }
+
+  &--dark {
+    margin-top: 2%;
+    background-color: $color-main-light;
+  }
+
+  &--highlight {
+    .box {
+      background: $color-main-light;
+    }
   }
 }
 

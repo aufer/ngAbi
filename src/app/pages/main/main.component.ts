@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ContentfulService} from '../../services/contentful/contentful.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Page} from '../../model/page.model';
+import {Appointment} from '../../model/appointment.model';
+import {Article} from '../../model/article.model';
 
 @Component({
   selector: 'abi-main',
@@ -9,6 +11,8 @@ import {Page} from '../../model/page.model';
 })
 export class MainComponent {
 
+  appointments: Appointment[];
+  latestNews: Article[];
   sections;
   footerPages;
 
@@ -30,13 +34,31 @@ export class MainComponent {
     }
   ];
 
-  constructor(private ctfSvc: ContentfulService, private route: ActivatedRoute) {
+  constructor(private ctfSvc: ContentfulService, private router: Router) {
     ctfSvc.getMainPages().then((pages: Page[]) => {
       this.sections = pages;
     });
 
     ctfSvc.getFooterPages().then((pages: Page[]) => {
       this.footerPages = pages;
+    });
+
+    ctfSvc.getUpcomingAppointments().then((appts: Appointment[]) => {
+      this.appointments = appts;
+    });
+
+    ctfSvc.getLatestArticles().then((articles: Article[]) => {
+      this.latestNews = articles;
+    });
+
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const tree = router.parseUrl(router.url);
+        if (tree.fragment) {
+          const element = document.querySelector('#' + tree.fragment);
+          if (element) { element.scrollIntoView({behavior: 'smooth'}); }
+        }
+      }
     });
   }
 }

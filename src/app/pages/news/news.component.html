@@ -2,7 +2,7 @@
   <section class="container">
     <h1>Aktuelles</h1>
     <article *ngFor="let section of articles; let pIdx = index" [ngClass]="{even: pIdx % 2 === 0}">
-      <h4>{{section.title}}</h4>
+      <h4 [id]="section.anchor">{{section.title}}</h4>
       <p class="date">Veröffentlicht am {{section.created}}</p>
       <figure *ngIf="section.image">
         <img [src]="section.image.url" [alt]="section.image.title">

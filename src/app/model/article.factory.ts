@@ -13,7 +13,12 @@ const buildArticle = (rawArticle: Entry<any>): Article => {
   return {
     title: rawArticle.fields['headline'],
     created: new Date(Date.parse(rawArticle.fields['erstellungsdatum'])).toLocaleDateString('de'),
+    anchor: createAnchor(rawArticle),
     content: normalizeRichContent(rawArticle.fields['artikelInhalt']),
     image: normalizePictureElement(rawArticle.fields['blogPostImage'])
   };
+};
+
+const createAnchor = (rawArticle: Entry<any>): string => {
+  return rawArticle.fields['headline'].toLowerCase().replace(/[!\-,\s]/g, '');
 };
