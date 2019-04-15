@@ -15,7 +15,8 @@ export const sortBy = prop => (a, b) => {
 export const normalizeRichContent = (content) => {
   return content.content.map(contentGroup => ({
     type: contentGroup.nodeType,
-    elements: normalizeElements(contentGroup.content)
+    elements: normalizeElements(contentGroup.content),
+    data: hasData(contentGroup.data) ? normalizeAssetData(contentGroup.data) : undefined
   }));
 };
 
@@ -30,3 +31,13 @@ const normalizeElements = elements => {
     };
   });
 };
+
+const normalizeAssetData = data => {
+  const asset = data.target.fields;
+  return {
+    url: asset.file.url,
+    caption: asset.title + ' - ' + asset.description
+  };
+};
+
+const hasData = data => data && Object.keys(data).length > 0;

@@ -17,6 +17,11 @@
   </ng-container>
 </p>
 
+<figure *ngIf="content.type === 'embedded-asset-block'">
+  <img [src]="content.data.url">
+  <figcaption>{{content.data.caption}}</figcaption>
+</figure>
+
 <ul *ngIf="content.type === 'unordered-list'">
   <li *ngFor="let item of content.elements">
     <ng-container *ngFor="let subItem of item.content">
