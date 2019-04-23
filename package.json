@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:prod": "ng build --prod && cp src/.htaccess dist/",
+    "build": "ng build && cp src/.htaccess dist/ngAbi && cp src/robots.txt dist/ngAbi && cp src/sitemap.xml dist/ngAbi",
+    "build:prod": "ng build --prod && cp src/.htaccess dist/ngAbi && cp src/robots.txt dist/ngAbi && cp src/sitemap.xml dist/ngAbi",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

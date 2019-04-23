@@ -1,0 +1,4 @@
+User-agent: *
+Noindex: /assets/
+
+Sitemap: https://abi-moeglingen.de/sitemap.xml
