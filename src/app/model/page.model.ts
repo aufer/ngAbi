@@ -1,6 +1,8 @@
+import {CtfRichContent} from "./utils";
+
 export abstract class Page {
   title: string;
-  content: string;
+  content: CtfRichContent[];
   images: string[];
   anchor: string;
 

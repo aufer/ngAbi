@@ -1,75 +1,43 @@
 <div class="page page--highlight">
-  <div class="row">
-    <div class="col-12 col-lg-8">
-      <abi-slider [sliderData]="sliderData" [isHero]="true"></abi-slider>
-    </div>
-    <div class="col-12 col-lg-4">
-      <div class="box">
-        <h5>Aktuelles</h5>
-        <div class="bullet"></div>
-        <ul *ngFor="let appt of latestNews">
-          <li><strong>{{appt.title}}</strong><br><span><a routerLink="/aktuelles"
-                                                          [fragment]="appt.anchor">&raquo; weiterlesen</a></span></li>
-        </ul>
-      </div>
-
-      <div class="box">
-        <h5>Termine</h5>
-        <ul *ngFor="let appt of appointments">
-          <li><strong>{{appt.date}}</strong><br><span>{{appt.title}}</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="page" *ngFor="let section of sections; let pIdx = index" [ngClass]="{even: pIdx % 2 === 0}">
-  <section class="container" [id]="section.anchor">
-    <h2>{{section.title}}</h2>
-    <abi-rich-content *ngFor="let content of section.content" [content]="content"></abi-rich-content>
-    <ng-container *ngIf="section.customContent">
-      <div class="row">
-        <div class="col-12 col-lg-6" *ngFor="let custElem of section.customContent; let i = index">
-          <div class="box">
-            <div class="row">
-              <div class="col-12 col-md-4" *ngIf="custElem.image">
-                <img [src]="custElem.image.url" alt="Card image cap">
-              </div>
-              <div class="col-12 col-md-8 mt-3 mt-md-0">
-                <h5>{{custElem.name}}</h5>
-                <h6>{{custElem.funktion}}</h6>
-                <ul>
-                  <li *ngFor="let fact of custElem.facts">{{fact}}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            <abi-slider [sliderData]="sliderData" [isHero]="true"></abi-slider>
         </div>
-      </div>
-    </ng-container>
-  </section>
+
+        <div class="col-12 col-lg-4">
+            <div class="box">
+                <h5>Aktuelles</h5>
+                <div class="bullet"></div>
+                <ul *ngFor="let news of latestNews">
+                    <li><strong>{{news.title}}</strong><br><span><a routerLink="/aktuelles"
+                                                                    [fragment]="news.anchor">&raquo; weiterlesen</a></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h5>Termine</h5>
+                <ul *ngFor="let appt of appointments">
+                    <li><strong>{{appt.date}}</strong><br><span>{{appt.title}}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
+<ng-container *ngFor="let section of sections; let pIdx = index">
+    <abi-page [section]="section" [even]="pIdx % 2 === 0"></abi-page>
+</ng-container>
 
 <div class="page even mt-5">
-  <section class="container" [id]="'oeffnungszeiten'">
-    <div class="row">
-      <div class="col-12 col-md-6" *ngFor="let footer of footerPages">
-        <h3>{{footer.title}}</h3>
-        <ng-container *ngFor="let content of footer.content">
-          <h3 *ngIf="content.type === 'heading-3'">{{content.elements[0].value}}</h3>
-          <h4 *ngIf="content.type === 'heading-4'">{{content.elements[0].value}}</h4>
-          <h5 *ngIf="content.type === 'heading-5'">{{content.elements[0].value}}</h5>
-          <h6 *ngIf="content.type === 'heading-6'">{{content.elements[0].value}}</h6>
-
-          <p *ngIf="content.type === 'paragraph'">
-            <ng-container *ngFor="let p of content.elements">
-              <ng-container *ngIf="p.type === 'text'">{{p.value}}</ng-container>
-              <a *ngIf="p.type === 'hyperlink'" [href]="p.raw.data.uri">{{p.raw.content[0].value}}</a>
-            </ng-container>
-          </p>
-        </ng-container>
-      </div>
-    </div>
-  </section>
+    <section class="container" [id]="'oeffnungszeiten'">
+        <div class="row">
+            <div class="col-12 col-md-6" *ngFor="let footer of footerPages">
+                <h3>{{footer.title}}</h3>
+                <ng-container *ngFor="let content of footer.content">
+                    <ctf-rich-content [content]="content"></ctf-rich-content>
+                </ng-container>
+            </div>
+        </div>
+    </section>
 </div>

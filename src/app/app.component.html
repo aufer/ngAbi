@@ -1,63 +1,50 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <header>
-  <nav id="mainNav" class="navbar navbar-light">
-    <a class="navbar-brand" routerLink="/">
-      <img src="assets/abi_logo.png">
-    </a>
+    <nav id="mainNav" class="navbar navbar-light">
+        <a class="navbar-brand" routerLink="/">
+            <img src="assets/abi_logo.png">
+        </a>
 
-    <ul class="nav main-nav justify-content-end d-none d-xl-flex">
-      <li class="nav-item" *ngFor="let section of sections">
-        <a class="nav-link" routerLink="/start" [fragment]="section.anchor" href="javascript: void(0)">{{section.title}}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/aktuelles" href="javascript: void(0)">Aktuelles</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/start" [fragment]="'oeffnungszeiten'" href="javascript: void(0)">Öffnungszeiten</a>
-      </li>
-    </ul>
+        <div class="burger" [class.open]="menuOpen" (click)="menuOpen = !menuOpen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-    <div class="burger" [class.open]="menuOpen" (click)="menuOpen = !menuOpen">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="mobile-nav-wrapper">
-      <div class="mobile-nav" [class.open]="menuOpen">
-        <ul class="justify-content-end">
-          <li class="list-item" *ngFor="let section of sections">
-            <a class="nav-link" routerLink="/start" [fragment]="section.anchor" (click)="menuOpen = false" href="javascript: void(0)">{{section.title}}</a>
-          </li>
-          <li class="list-item">
-            <a class="nav-link" routerLink="/aktuelles" (click)="menuOpen = false" href="javascript: void(0)">Aktuelles</a>
-          </li>
-          <li class="list-item">
-            <a class="nav-link" routerLink="/start" [fragment]="'oeffnungszeiten'" (click)="menuOpen = false" href="javascript: void(0)">Öffnungszeiten</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        <div class="mobile-nav-wrapper">
+            <div class="mobile-nav" [class.open]="menuOpen">
+                <ul class="justify-content-end">
+                    <li class="list-item">
+                        <a class="nav-link" routerLink="/aktuelles" (click)="menuOpen = false"
+                           href="javascript: void(0)">Aktuelles</a>
+                    </li>
+                    <li class="list-item" *ngFor="let section of sections">
+                        <a class="nav-link" routerLink="/start" [fragment]="section.anchor" (click)="menuOpen = false"
+                           href="javascript: void(0)">{{section.title}}</a>
+                    </li>
+                    <li class="list-item">
+                        <a class="nav-link" routerLink="/start" [fragment]="'oeffnungszeiten'"
+                           (click)="menuOpen = false" href="javascript: void(0)">Öffnungszeiten</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="spacer"></div>
 </header>
 
-<router-outlet style="padding-top: 15%;"></router-outlet>
+<router-outlet></router-outlet>
 
 <footer>
-  <nav class="navbar navbar-light py-5">
-    <span>Copyright &copy; 2019 Abenteuerspielplatz Möglingen. Alle Rechte vorbehalten.</span>
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/impressum" href="javascript: void(0)">Impressum</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/datenschutz" href="javascript: void(0)">Datenschutz</a>
-      </li>
-    </ul>
-  </nav>
-  <abi-cookie-bar (accepted)="cookiesAccepted($event)" [privacyTermsTarget]="'datenschutz'"></abi-cookie-bar>
+    <nav class="navbar navbar-light py-5">
+        <span>Copyright &copy; 2019 Abenteuerspielplatz Möglingen. Alle Rechte vorbehalten.</span>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/impressum" href="javascript: void(0)">Impressum</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/datenschutz" href="javascript: void(0)">Datenschutz</a>
+            </li>
+        </ul>
+    </nav>
+    <abi-cookie-bar (accepted)="cookiesAccepted($event)" [privacyTermsTarget]="'datenschutz'"></abi-cookie-bar>
 </footer>
-
-<button class="goup" [class.show]="showGoUp" (click)="goUp()">
-  <div></div>
-</button>
-

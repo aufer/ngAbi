@@ -7,7 +7,7 @@
       <figure *ngIf="section.image">
         <img [src]="section.image.url" [alt]="section.image.title">
       </figure>
-      <abi-rich-content *ngFor="let content of section.content" [content]="content"></abi-rich-content>
+      <ctf-rich-content *ngFor="let content of section.content" [content]="content"></ctf-rich-content>
     </article>
   </section>
 </div>
