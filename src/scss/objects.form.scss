@@ -1,0 +1,9 @@
+form {
+    margin: 0 auto;
+    width: 90%;
+
+    @include media-breakpoint-up(lg) {
+        margin: 0 25% 0 5%;
+        width: 70%;
+    }
+}

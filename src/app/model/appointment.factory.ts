@@ -6,6 +6,6 @@ export const appointmentsCollectionBuilder = (rawAppts: EntryCollection<any>): A
   return rawAppts.items.map(item => ({
     title: item.fields['headline'],
     date: new Date(Date.parse(item.fields['datum'])).toLocaleString('de').replace(/:00$/, ' Uhr'),
-    description: item.fields['details'] ? normalizeRichContent(item.fields['details']) : ''
+    description: item.fields.hasOwnProperty('details') ? normalizeRichContent(item.fields['details']) : []
   }));
 };

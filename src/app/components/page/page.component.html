@@ -1,0 +1,26 @@
+<div class="page" [class.even]="even">
+    <section class="container" [id]="section.anchor">
+        <h2>{{section.title}}</h2>
+        <ctf-rich-content *ngFor="let content of section.content" [content]="content"></ctf-rich-content>
+        <ng-container *ngIf="section.customContent">
+            <div class="row">
+                <div class="col-12 col-lg-6" *ngFor="let custElem of section.customContent; let i = index">
+                    <div class="box">
+                        <div class="row">
+                            <div class="col-12 col-md-4" *ngIf="custElem.image">
+                                <img [src]="custElem.image.url" alt="Card image cap">
+                            </div>
+                            <div class="col-12 col-md-8 mt-3 mt-md-0">
+                                <h5>{{custElem.name}}</h5>
+                                <h6>{{custElem.funktion}}</h6>
+                                <ul>
+                                    <li *ngFor="let fact of custElem.facts">{{fact}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </section>
+</div>

@@ -1,0 +1,56 @@
+
+.page {
+    margin: 0;
+    overflow-x: hidden;
+
+    @include media-breakpoint-up(md) {
+        margin: 0 auto;
+        max-width: 90%;
+    }
+
+
+    section {
+        padding: 3rem 1rem;
+    }
+
+    .box {
+        padding: 2rem;
+        background: white;
+        margin-bottom: 1rem;
+
+        &--dark {
+            background-color: $color-main-light;
+        }
+
+        &__with-border {
+            border: 1px solid $color-accent2;
+        }
+    }
+
+    ul {
+        font-weight: lighter;
+    }
+
+    figure {
+        margin: 2rem auto;
+        width: 85%
+    }
+
+    &.even {
+        background-color: $color-main-light;
+    }
+
+    &--dark {
+        margin-top: 2%;
+        background-color: $color-main-light;
+    }
+
+    &--highlight {
+        width: 100%;
+        max-width: 100%;
+
+        .box {
+            background: $color-main-light;
+        }
+    }
+}

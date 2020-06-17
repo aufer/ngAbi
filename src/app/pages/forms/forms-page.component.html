@@ -1,0 +1,51 @@
+<div class="page page--dark">
+    <section class="container">
+        <h1>{{formType?.name}}</h1>
+
+        <p>{{formType?.description}}</p>
+
+        <form *ngIf="dynamicForm" [formGroup]="dynamicForm.formGroup">
+            <div *ngFor="let field of dynamicForm.fields" [class.checkbox]="field.type === 'Array'" class="form-group">
+                <label [for]="field.id" class="control-label" *ngIf="field.type !== 'Boolean'">
+                    {{field.name}}
+                </label>
+
+                <ng-container *ngIf="field.type === 'Boolean'">
+                    <label class="control-label">{{field.name}}</label>
+                    <div class="radio">
+                        <label class="radio-inline">
+                            <input [id]="field.id + '_ja'" type="radio" [formControl]="field.control" value="true" [class.is-invalid]="field.control.touched && field.control.invalid"> Ja
+                        </label>&nbsp;
+                        <label class="radio-inline">
+                            <input [id]="field.id + '_nein'" type="radio" [formControl]="field.control" value="false" [class.is-invalid]="field.control.touched && field.control.invalid"> Nein
+                        </label>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="field.type === 'Array'">
+                    <br>
+                    <ng-container *ngFor="let c of dynamicForm.formGroup.controls[field.id].controls; let i=index">
+                        <label [for]="field.id + '_' + i" class="control-label">
+                            <input type="checkbox" [formControl]="c" [id]="field.id + '_' + i" [class.is-invalid]="field.control.touched && field.control.invalid" > {{field.items[i]}}
+                        </label><br>
+                    </ng-container>
+                </ng-container>
+
+                <input *ngIf="field.type === 'Symbol'" [id]="field.id" type="text" [formControl]="field.control" class="form-control" [class.is-invalid]="field.control.touched && field.control.invalid">
+                <input *ngIf="field.type === 'Date'" [id]="field.id" type="date" [formControl]="field.control" class="form-control" [class.is-invalid]="field.control.touched && field.control.invalid">
+
+                <ng-container *ngIf="field.control.touched && field.control.invalid">
+                    <span class="invalid-feedback" style="font-weight: bold;">
+                        {{field.control.errors.required ? 'Bitte ' + field.name + ' angeben' : ''}}
+                        {{field.control.errors.pattern ? 'Bitte überprüfen Sie das Format' : ''}}
+                        {{field.control.errors.min ? 'Achtung, zu klein!' : ''}}
+                        {{field.control.errors.max ? 'Achtung, zu groß!' : ''}}
+                    </span>
+                </ng-container>
+            </div>
+
+            <button type="button" class="btn btn-primary" [attr.disabled]="dynamicForm.formGroup.valid" (click)="send()">Absenden</button>
+        </form>
+
+    </section>
+</div>

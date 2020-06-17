@@ -1,55 +1,11 @@
-@import "./objects.goup";
+@import "./objects.burger";
+@import "./objects.form";
 @import "./objects.hero";
 @import "./objects.nav";
-
-.page {
-  margin: 0;
-
-  section {
-    padding: 3rem 1rem;
-  }
-
-  .box {
-    padding: 2rem;
-    background: white;
-    margin-bottom: 1rem;
-
-    &--dark {
-      background-color: $color-main-light;
-    }
-
-    &__with-border {
-      border: 1px solid $color-accent2;
-    }
-
-    ul {
-      font-weight: lighter;
-    }
-  }
-
-  figure {
-    margin: 2rem auto;
-    width: 85%
-  }
-
-  &.even {
-    background-color: $color-main-light;
-  }
-
-  &--dark {
-    margin-top: 2%;
-    background-color: $color-main-light;
-  }
-
-  &--highlight {
-    .box {
-      background: $color-main-light;
-    }
-  }
-}
+@import "./objects.page";
 
 #partner {
-  p {
-    text-align: left;
-  }
+    p {
+        text-align: left;
+    }
 }
