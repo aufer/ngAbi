@@ -10,23 +10,37 @@ nav {
     }
 }
 
-$nav-height-mobile: 88px;
+$nav-height-mobile: 60px;
 $nav-height-desktop: 113px;
 
 #mainNav {
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     position: fixed;
     top: 0px;
     overflow: hidden;
     z-index: 10;
+    height: $nav-height-mobile;
     width: 100%;
+    transition: height 300ms linear;
+
+    @include media-breakpoint-up(xl) {
+        height: $nav-height-desktop;
+
+        &.small {
+            height: $nav-height-mobile;
+
+            ul li {
+                padding: 0 0.5rem !important;
+            }
+        }
+    }
 
     .navbar-brand {
+        height: 100%;
+
         img {
-            width: 50%;
-            @include media-breakpoint-up(xl) {
-                width: 70%;
-            }
+            height: 100%;
+            width: auto;
         }
     }
 
@@ -87,7 +101,7 @@ $nav-height-desktop: 113px;
                 border-bottom: 1px solid $color-accent2-light;
                 position: relative;
                 right: -100%;
-                transition: right 400ms ease-out;
+                transition: right 400ms ease-out, padding 300ms linear 0ms;
 
                 @for $i from 10 through 1 {
                     &:nth-of-type(#{$i}) {
@@ -111,7 +125,7 @@ $nav-height-desktop: 113px;
             background: none;
             top: 0;
             bottom: auto;
-            height: $nav-height-desktop;
+
             left: 10%;
             transform: translateX(0);
 

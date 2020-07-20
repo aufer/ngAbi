@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {Component, HostListener, OnInit, Renderer2} from '@angular/core';
 import {ContentfulService}            from './services/contentful/contentful.service';
 import {NavigationEnd, Router}        from '@angular/router';
 import {TrackingService}              from './services/tracking.service';
@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
     footerPages;
 
     menuOpen: boolean;
+    isScrolledDown: boolean;
 
     constructor(private ctfSvc: ContentfulService, private router: Router, private trackingSvc: TrackingService, private renderer: Renderer2) {
         ctfSvc.getMainPages().then(pages => {
@@ -22,6 +23,11 @@ export class AppComponent implements OnInit {
         ctfSvc.getFooterPages().then(pages => {
             this.footerPages = pages;
         });
+    }
+
+    @HostListener('window:scroll') // for window scroll events
+    onScroll() {
+        this.isScrolledDown = window.scrollY > 100;
     }
 
     ngOnInit() {
@@ -38,9 +44,5 @@ export class AppComponent implements OnInit {
         } else {
             this.trackingSvc.deactivate();
         }
-    }
-
-    private scrollTo(elemId) {
-        document.getElementById(elemId).scrollIntoView({behavior: 'smooth'});
     }
 }
