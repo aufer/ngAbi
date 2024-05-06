@@ -17,18 +17,19 @@ jobs:
                 NG_ENVIRONMENT: '${{ secrets.NG_ENVIRONMENT }}'
             
             # Prepare Angular build
-            # - run: yarn
+            - run: yarn
             
             # Build Angular app
-            # - run: yarn build:prod
+            - run: yarn build:prod
 
-            # Create backup of current deployment
-            -   name: Create backup of current deployment
-                uses: appleboy/ssh-action@v1.0.3
+            # Deploy app
+            -   name: Deploy artifact
+                uses: appleboy/scp-action@v0.1.7
                 with:
                     host: ${{ secrets.TARGET_HOST }}
                     username: ${{ secrets.TARGET_USER }}
                     password: ${{ secrets.TARGET_PASSWORD }}
-                    port: ${{ secrets.PORT }}
                     fingerprint: ${{ secrets.TARGET_FINGERPRINT }}
-                    script: tar -czvf file.tar.gz ngAbi
+                    source: "dist/ngAbi/*"
+                    rm: true
+                    target: ngAbi
