@@ -33,6 +33,3 @@ jobs:
                 fingerprint: ${{ secrets.TARGET_FINGERPRINT }}
                 source: ngAbi
                 target: ngAbi_backup
-
-
-                ssh example.com ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub | cut -d ' ' -f2
