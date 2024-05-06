@@ -21,3 +21,14 @@ jobs:
             
             # Build Angular app
             - run: yarn build:prod
+
+            # Create backup of current deployment
+            - name: Backup a Directory
+              uses: nicklasfrahm/scp-action@main
+              with:
+                direction: download
+                host: ${{ secrets.TARGET_HOST }}
+                username: ${{ secrets.TARGET_USER }}
+                insecure_password: ${{ secrets.TARGET_PASSWORD }}
+                source: ngAbi
+                target: ngAbi_backup
