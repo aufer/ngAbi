@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit, Renderer2} from '@angular/core';
 import {ContentfulService}            from './services/contentful/contentful.service';
 import {NavigationEnd, Router}        from '@angular/router';
 import {TrackingService}              from './services/tracking.service';
+import { of } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -14,6 +15,8 @@ export class AppComponent implements OnInit {
 
     menuOpen: boolean;
     isScrolledDown: boolean;
+
+    currentYear$ = of(new Date().getFullYear());
 
     constructor(private ctfSvc: ContentfulService, private router: Router, private trackingSvc: TrackingService, private renderer: Renderer2) {
         ctfSvc.getMainPages().then(pages => {

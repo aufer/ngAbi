@@ -1,8 +1,9 @@
-import {Component}        from "@angular/core";
+import {ChangeDetectionStrategy, Component}        from "@angular/core";
 import {CtfBaseComponent} from "./ctf-base.component";
 
 @Component({
     selector: 'ctf-text',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <ng-container *ngIf="content.marks.length === 0">{{content.value}}</ng-container>
         <ng-container *ngIf="isBold()"><strong>{{content.value}}</strong></ng-container>

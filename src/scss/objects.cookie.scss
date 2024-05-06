@@ -1,0 +1,58 @@
+
+.cookie-bar {
+    background: white;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+    position: fixed;
+    padding: 2rem;
+    text-align: justify;
+    z-index: 1000;
+  
+    bottom: 0;
+    left: 0;
+    right: 0;
+  
+    transition: transform 200ms linear 300ms;
+
+    h4 {
+        font-size: 160%;
+        margin: 0 0 1rem;
+    }
+  
+    p {
+      font-size: 1rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        left: 20%;
+        right: 20%;
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+        border: 1px solid #ccc;
+  
+        button {
+          font-size: 1rem;
+        }
+      }
+  
+      @include media-breakpoint-up(xl) {
+        left: 30%;
+        right: 30%;
+      }
+  }
+  
+  .cookie-bar-closer {
+    cursor: pointer;
+    text-align: right;
+  }
+  
+.done .cookie-bar {
+  transform: translateY(600%) !important;
+}
+  
+  

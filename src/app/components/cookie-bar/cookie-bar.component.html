@@ -1,7 +1,10 @@
-<div class="keks-leiste">
-  <div class="cookie-bar-closer"><button class="btn btn-link" (click)="select(false)">Schließen</button></div>
+<div class="cookie-bar">
+  <h4>Cookie-Informationen</h4>
   <p>
-    Diese Website verwendet Cookies – nähere Informationen dazu und zu Ihren Rechten als Benutzer finden Sie in unserer <a [routerLink]="privacyTermsTarget">Datenschutzerklärung</a> am Ende der Seite. Klicken Sie auf „Ich stimme zu“, um Cookies zu akzeptieren und direkt unsere Website besuchen zu können.
-    <button (click)="select(true)" class="btn btn-success">Ich stimme zu</button>
+    Diese Website verwendet Cookies für die Analyse des Nutzerverhaltens – nähere Informationen dazu und zu Ihren Rechten als Benutzer finden Sie in unserer <a [routerLink]="privacyTermsTarget">Datenschutzerklärung</a> am Ende der Seite. Klicken Sie auf „Ich stimme zu“, um Cookies zu akzeptieren und direkt unsere Website besuchen zu können.
+  </p>
+  <p style="text-align: right">
+    <button (click)="select(false)" class="btn btn-outline-secondary">Alle Cookies ablehnen</button>&nbsp;
+    <button (click)="select(true)" class="btn btn-success">Alle Cookies akzeptieren</button>
   </p>
 </div>

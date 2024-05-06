@@ -48,7 +48,7 @@
   .hero-background {
     position: absolute;
     width: 100%;
-    height: 85%;
+    height: calc(100% - 60px);
     top: 0;
     right: 0;
     background: no-repeat center;
@@ -78,7 +78,7 @@
 
   @include media-breakpoint-up(xl) {
     .hero-background {
-      height: 85%;
+      height: calc(100% - 113px);
     }
   }
 }

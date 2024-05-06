@@ -1,8 +1,9 @@
 import {CtfBaseComponent} from "./ctf-base.component";
-import {Component}        from "@angular/core";
+import {ChangeDetectionStrategy, Component}        from "@angular/core";
 
 @Component({
     selector: 'ctf-hyperlink',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <ng-container *ngIf="content.type === 'hyperlink'">
             <a *ngIf="content.raw.data.uri.startsWith('/')" [routerLink]="content.raw.data.uri.split('#')[0]"

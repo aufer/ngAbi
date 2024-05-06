@@ -1,6 +1,15 @@
-import {Input} from "@angular/core";
+import {Directive, Input} from "@angular/core";
 
+@Directive()
 export abstract class CtfBaseComponent {
+    private _content: any;
+
     @Input()
-    public content: any;
+    public set content(content: any) {
+        this._content = content
+    }
+
+    public get content(): any {
+        return this._content;
+    }
 }

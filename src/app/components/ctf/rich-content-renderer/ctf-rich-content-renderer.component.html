@@ -1,11 +1,11 @@
-<ctf-headline *ngIf="content.type.startsWith('heading-')" [content]="content"></ctf-headline>
-<ctf-text *ngIf="content.type === 'text'" [content]="content"></ctf-text>
-<ctf-hyperlink *ngIf="content.type.indexOf('hyperlink') > -1" [content]="content"></ctf-hyperlink>
-<ctf-image *ngIf="content.type === 'embedded-asset-block'" [content]="content"></ctf-image>
-<ctf-list *ngIf="content.type.indexOf('-list') > -1" [content]="content"></ctf-list>
-<p *ngIf="content.type === 'paragraph'">
+<ctf-headline *ngIf="content?.type.startsWith('heading-')" [content]="content"></ctf-headline>
+<ctf-text *ngIf="content?.type === 'text'" [content]="content"></ctf-text>
+<ctf-hyperlink *ngIf="content?.type.indexOf('hyperlink') > -1" [content]="content"></ctf-hyperlink>
+<ctf-image *ngIf="content?.type === 'embedded-asset-block'" [content]="content"></ctf-image>
+<ctf-list *ngIf="content?.type.indexOf('-list') > -1" [content]="content"></ctf-list>
+<p *ngIf="content?.type === 'paragraph'">
     <ng-container *ngFor="let p of content.elements">
-        <ctf-text *ngIf="p.type === 'text'" [content]="p"></ctf-text>
-        <ctf-hyperlink *ngIf="p.type.indexOf('hyperlink') > -1" [content]="p"></ctf-hyperlink>
+        <ctf-text *ngIf="p?.type === 'text'" [content]="p"></ctf-text>
+        <ctf-hyperlink *ngIf="p?.type.indexOf('hyperlink') > -1" [content]="p"></ctf-hyperlink>
     </ng-container>
 </p>

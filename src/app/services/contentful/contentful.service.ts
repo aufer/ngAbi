@@ -7,13 +7,13 @@ import {Article}                                     from '../../model/article.m
 import {Appointment}                                 from '../../model/appointment.model';
 import {appointmentsCollectionBuilder}               from '../../model/appointment.factory';
 import * as ctf                                      from "contentful";
-import {createClient as createMgmtClient, ClientAPI} from "contentful-management";
+import {createClient as createMgmtClient}            from "contentful-management";
 import {environment}                                 from "../../../environments/environment";
 
 @Injectable()
 export class ContentfulService {
     private ctfSvc: ContentfulClientApi;
-    private ctfMgmtSvc: ClientAPI;
+    private ctfMgmtSvc: any;
 
     private readonly space = environment.ctfSpaceId;
     private readonly accessToken = environment.ctfApiToken;
@@ -27,7 +27,7 @@ export class ContentfulService {
         });
 
         this.ctfMgmtSvc = createMgmtClient({
-            accessToken: this.mgmtAccessToken,
+            accessToken: this.mgmtAccessToken || 'token',
         });
     }
 
