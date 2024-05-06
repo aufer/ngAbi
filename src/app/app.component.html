@@ -1,7 +1,7 @@
 <header>
     <nav id="mainNav" class="navbar navbar-light" [class.small]="isScrolledDown">
-        <a class="navbar-brand" routerLink="/">
-            <img src="assets/abi_logo.png">
+        <a class="navbar-brand" routerLink="/" aria-label="Link zur Startseite" title="Link zur Startseite">
+            <img src="assets/abi_logo.png" alt="Logo des Abenteuerspielplatzes Möglingen e.V.">
         </a>
 
         <div class="burger" [class.open]="menuOpen" (click)="menuOpen = !menuOpen">
