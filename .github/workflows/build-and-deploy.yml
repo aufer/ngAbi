@@ -23,13 +23,12 @@ jobs:
             # - run: yarn build:prod
 
             # Create backup of current deployment
-            - name: Backup a Directory
-              uses: nicklasfrahm/scp-action@main
-              with:
-                direction: download
-                host: ${{ secrets.TARGET_HOST }}
-                username: ${{ secrets.TARGET_USER }}
-                insecure_password: ${{ secrets.TARGET_PASSWORD }}
-                fingerprint: ${{ secrets.TARGET_FINGERPRINT }}
-                source: ngAbi
-                target: ngAbi_backup
+            -   name: Create backup of current deployment
+                uses: appleboy/ssh-action@v1.0.3
+                with:
+                    host: ${{ secrets.TARGET_HOST }}
+                    username: ${{ secrets.TARGET_USER }}
+                    password: ${{ secrets.TARGET_PASSWORD }}
+                    port: ${{ secrets.PORT }}
+                    fingerprint: ${{ secrets.TARGET_FINGERPRINT }}
+                    script: tar -czvf file.tar.gz ngAbi
