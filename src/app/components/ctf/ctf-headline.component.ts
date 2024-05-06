@@ -1,8 +1,9 @@
 import {CtfBaseComponent} from "./ctf-base.component";
-import {Component}        from "@angular/core";
+import {ChangeDetectionStrategy, Component}        from "@angular/core";
 
 @Component({
     selector: 'ctf-headline',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <h3 *ngIf="content.type === 'heading-3'">{{content.elements[0].value}}</h3>
         <h4 *ngIf="content.type === 'heading-4'">{{content.elements[0].value}}</h4>

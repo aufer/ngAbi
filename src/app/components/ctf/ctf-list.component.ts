@@ -1,8 +1,9 @@
 import {CtfBaseComponent} from "./ctf-base.component";
-import {Component}        from "@angular/core";
+import {ChangeDetectionStrategy, Component}        from "@angular/core";
 
 @Component({
     selector: 'ctf-list',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <ul *ngIf="content.type === 'unordered-list'" class="list list--unordered">
             <ctf-list-items [content]="content"></ctf-list-items>

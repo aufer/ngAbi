@@ -1,13 +1,6 @@
-
 .page {
-    margin: 0;
+    margin: 0 auto;
     overflow-x: hidden;
-
-    @include media-breakpoint-up(md) {
-        margin: 0 auto;
-        max-width: 90%;
-    }
-
 
     section {
         padding: 3rem 1rem;

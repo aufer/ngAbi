@@ -2,8 +2,6 @@ import {Component, OnInit}                               from "@angular/core";
 import {ActivatedRoute}                                  from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ContentfulService}                               from "../../services/contentful/contentful.service";
-import {ContentType}                                     from "contentful-management/typings/contentType";
-import {Field}                                           from "contentful";
 
 export interface DynamicForm {
     formGroup: FormGroup;
@@ -24,7 +22,7 @@ export interface DynamicFormElement {
 })
 export class FormsPageComponent implements OnInit {
     formId: string;
-    formType: ContentType;
+    formType: any;
 
     dynamicForm: DynamicForm;
 

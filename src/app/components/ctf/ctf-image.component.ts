@@ -1,8 +1,9 @@
 import {CtfBaseComponent} from "./ctf-base.component";
-import {Component}        from "@angular/core";
+import {ChangeDetectionStrategy, Component}        from "@angular/core";
 
 @Component({
     selector: 'ctf-image',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <figure>
             <img [src]="content.data.url">
