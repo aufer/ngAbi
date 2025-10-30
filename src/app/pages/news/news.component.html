@@ -1,6 +1,6 @@
 <div class="page page--dark">
   <section class="container">
-    <h1>Aktuelles</h1>
+    <h2>Aktuelles</h2>
     <article *ngFor="let section of articles; let pIdx = index" [ngClass]="{even: pIdx % 2 === 0}">
       <h4 [id]="section.anchor">{{section.title}}</h4>
       <p class="date">Veröffentlicht am {{section.created}}</p>
